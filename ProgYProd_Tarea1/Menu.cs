@@ -10,80 +10,70 @@ namespace ProgYProd_Tarea1
     {
         string marca;
         int ruedas;
-        Vehiculo v1;
+        int puertas;
+        bool maletera;
+        //Vehiculo v1;
         bool continueFlag = true;
 
+        Vehiculo vehiculo;
+        Carro carro;
+        Moto moto;
+
         public void Execute()
-        { 
-            EnterBrand();
-            EnterWheels();
-            ShowVehicleData();
-        
-        }
-
-        private void ShowVehicleData()
         {
-            v1 = new Vehiculo(marca, ruedas);
-            Console.WriteLine($"Marca del vehiculo: {marca}. Numero de ruedas: {ruedas}");
-        }
-        
-        private void EnterBrand()
-        {
-            Console.WriteLine("Introduce la marca de tu Vehiculo");
-            marca = Console.ReadLine();
-            Console.WriteLine($"Genial, tu vehiculo es un {marca}!");
+            vehiculo = new Vehiculo(marca, ruedas);
+            carro = new Carro(marca, ruedas, puertas);
+            moto = new Moto(marca, ruedas, maletera);
+
+            PlayMenu();
 
         }
 
-        private void EnterWheels()
+        private void PlayMenu()
         {
             while(continueFlag)
             {
-                Console.WriteLine("Introduce la cantidad de ruedas que tiene tu vehiculo");
-                ruedas = int.Parse(Console.ReadLine());
-                Console.WriteLine($"¿Dices que tu {marca} tiene {ruedas} ruedas?");
-                CheckNumberOfWheels(ruedas);
+                int option;
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine("ESCRIBE EL NUMERO PARA LA OPCION DESEADA:");
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine("1. Añadir Vehiculo");
+                Console.WriteLine("2. Añadir Carro");
+                Console.WriteLine("3. Añadir Moto");
+                Console.WriteLine("0. Salir");
+                option = int.Parse(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        vehiculo.AddVehicle();
+                        break;
+                    case 2:
+                        carro.AddVehicle();
+                        break;
+                    case 3:
+                        moto.AddVehicle();
+                        break;
+                    case 0:
+                        continueFlag = false;
+                        break;
+                    default:
+                        Console.WriteLine("Opcion no valida");
+                        break;
+
+                }
+
+
             }
         }
 
-        public void CheckNumberOfWheels(int ruedasNumber)
-        {
-            if (ruedasNumber <= 0)
-            {
-                Console.WriteLine("Un vehiculo no puede funcionar sin ruedas");
-            }
-            else if (ruedasNumber == 1)
-            {
-                Console.WriteLine("No es un vehiculo, es un monopatin");
-            }
-            else if (ruedasNumber == 2)
-            {
-                continueFlag = false;
-                Console.WriteLine("Bien, tu vehiculo es una moto, asegurate de usar casco. Buen viaje");
-            }
-            else if (ruedasNumber == 3)
-            {
-                continueFlag = false;
-                Console.WriteLine("Que moto tan extraña. Buen viaje!");
-            }
-            else if (ruedasNumber == 4)
-            {
-                continueFlag = false;
-                Console.WriteLine("Que lindo auto. Buen viaje!");
-            }
-            else if (ruedasNumber == 5)
-            {
-                Console.WriteLine("No creo que existan autos de 5 ruedas");
-            }
-            else if (ruedasNumber == 6)
-            {
-                continueFlag = false;
-                Console.WriteLine("Genial, un todoterreno. Buen viaje!");
-            }
-            else
-            {
-                Console.WriteLine("Numero de ruedas invalido, escribe de nuevo");
-            }
-        }
+
+
+        //private void ShowVehicleData()
+        //{
+        //    v1 = new Vehiculo(marca, ruedas);
+        //    Console.WriteLine($"Marca del vehiculo: {marca}. Numero de ruedas: {ruedas}");
+        //}
+        
+        
     }
 }
