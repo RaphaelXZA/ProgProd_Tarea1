@@ -18,7 +18,8 @@ namespace ProgYProd_Tarea1
         }
 
         public string Nombre { get { return marca; } }
-        public int Ruedas { get { return ruedas; } }            
+        public int Ruedas { get { return ruedas; } }       
+        
 
     }
 }

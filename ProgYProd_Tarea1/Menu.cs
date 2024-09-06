@@ -11,7 +11,8 @@ namespace ProgYProd_Tarea1
         string marca;
         int ruedas;
         Vehiculo v1;
-        
+        bool continueFlag = true;
+
         public void Execute()
         { 
             EnterBrand();
@@ -36,48 +37,52 @@ namespace ProgYProd_Tarea1
 
         private void EnterWheels()
         {
-            bool continueFlag = true;
             while(continueFlag)
             {
                 Console.WriteLine("Introduce la cantidad de ruedas que tiene tu vehiculo");
                 ruedas = int.Parse(Console.ReadLine());
                 Console.WriteLine($"¿Dices que tu {marca} tiene {ruedas} ruedas?");
-                if (ruedas <= 0)
-                {
-                    Console.WriteLine("Un vehiculo no puede funcionar sin ruedas");
-                }
-                else if (ruedas == 1)
-                {
-                    Console.WriteLine("No es un vehiculo, es un monopatin");
-                }
-                else if (ruedas == 2)
-                {
-                    continueFlag = false;
-                    Console.WriteLine("Bien, tu vehiculo es una moto, asegurate de usar casco. Buen viaje");
-                }
-                else if (ruedas == 3)
-                {
-                    continueFlag = false;
-                    Console.WriteLine("Que moto tan extraña. Buen viaje!");
-                }
-                else if (ruedas == 4)
-                {
-                    continueFlag = false;
-                    Console.WriteLine("Que lindo auto. Buen viaje!");
-                }
-                else if (ruedas == 5)
-                {
-                    Console.WriteLine("No creo que existan autos de 5 ruedas");
-                }
-                else if (ruedas == 6)
-                {
-                    continueFlag = false;
-                    Console.WriteLine("Genial, un todoterreno. Buen viaje!");
-                }
-                else
-                {
-                    Console.WriteLine("Numero de ruedas invalido, escribe de nuevo");
-                }
+                CheckNumberOfWheels(ruedas);
+            }
+        }
+
+        public void CheckNumberOfWheels(int ruedasNumber)
+        {
+            if (ruedasNumber <= 0)
+            {
+                Console.WriteLine("Un vehiculo no puede funcionar sin ruedas");
+            }
+            else if (ruedasNumber == 1)
+            {
+                Console.WriteLine("No es un vehiculo, es un monopatin");
+            }
+            else if (ruedasNumber == 2)
+            {
+                continueFlag = false;
+                Console.WriteLine("Bien, tu vehiculo es una moto, asegurate de usar casco. Buen viaje");
+            }
+            else if (ruedasNumber == 3)
+            {
+                continueFlag = false;
+                Console.WriteLine("Que moto tan extraña. Buen viaje!");
+            }
+            else if (ruedasNumber == 4)
+            {
+                continueFlag = false;
+                Console.WriteLine("Que lindo auto. Buen viaje!");
+            }
+            else if (ruedasNumber == 5)
+            {
+                Console.WriteLine("No creo que existan autos de 5 ruedas");
+            }
+            else if (ruedasNumber == 6)
+            {
+                continueFlag = false;
+                Console.WriteLine("Genial, un todoterreno. Buen viaje!");
+            }
+            else
+            {
+                Console.WriteLine("Numero de ruedas invalido, escribe de nuevo");
             }
         }
     }
